@@ -3,6 +3,8 @@ package org.input;
 import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
+import org.graphics.Vector2;
+
 public class Mouse implements MouseListener{
 
 	private static int mouseX = 0;
@@ -15,7 +17,7 @@ public class Mouse implements MouseListener{
 	public void mouseDragged(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		System.out.println("Dragged");
+		//System.out.println("Dragged");
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -50,6 +52,10 @@ public class Mouse implements MouseListener{
 	
 	public static int getY() {
 		return mouseY;
+	}
+
+	public static Vector2 getPosition(){
+		return new Vector2(mouseX,mouseY);
 	}
 	
 }
