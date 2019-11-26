@@ -2,15 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
-	<classpathentry kind="lib" path="C:/Users/Logan/Desktop/CodingFiles/OpenGL/jogamp-all-platforms/jar/gluegen-rt.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="RocketMan/natives"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Logan/Desktop/CodingFiles/OpenGL/jogamp-all-platforms/jar/jogl-all.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="RocketMan/natives"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="D:/Mijn documenten/GitHub/RocketMan/lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="D:/Mijn documenten/GitHub/RocketMan/lib/jogl-all.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

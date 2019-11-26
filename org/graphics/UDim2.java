@@ -33,5 +33,9 @@ public class UDim2 {
         UDim retY = y.lerp(other.y,alpha);
         return new UDim2(retX, retY);
     }
+
+    public String toString(){
+        return "X: Scale:"+x.Scale+" Offset: "+y.Offset+" Y: Scale: "+y.Scale+" Offset: "+y.Offset;
+    }
     
 }
