@@ -3,7 +3,9 @@ package org.input;
 import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
+import org.graphics.Renderer;
 import org.graphics.Vector2;
+import org.world.Camera;
 
 public class Mouse implements MouseListener{
 
@@ -45,7 +47,9 @@ public class Mouse implements MouseListener{
 	public void mouseWheelMoved(MouseEvent e) {
 		System.out.println("Scrolled");
 	}
-	
+
+
+	// MOUSE POSITION METHODS
 	public static int getX() {
 		return mouseX;
 	}
@@ -56,6 +60,18 @@ public class Mouse implements MouseListener{
 
 	public static Vector2 getPosition(){
 		return new Vector2(mouseX,mouseY);
+	}
+
+	public static float getWorldX(){
+		return (Renderer.unitsWide / Renderer.getWindowWidth() * mouseX - Renderer.unitsWide / 2) + Camera.position.x;
+	}
+
+	public static float getWorldY(){
+		return (Renderer.unitsTall / Renderer.getWindowHeight() * mouseY - Renderer.unitsTall / 2) + Camera.position.y;
+	}
+
+	public static Vector2 getWorldPosition(){
+		return new Vector2(getWorldX(), getWorldY());
 	}
 	
 }

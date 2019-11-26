@@ -22,4 +22,9 @@ public abstract class GameObject {
 		// Implement in subclass?
 	}
 
+	// linear interpolation of single numbers
+	private static float lerp(float x, float y, float alpha) {
+		return x*(1-alpha) + y*alpha;
+	}
+
 }
