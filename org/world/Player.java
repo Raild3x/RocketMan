@@ -1,10 +1,14 @@
 package org.world;
 
+import com.jogamp.newt.event.KeyEvent;
+
+import org.engine.GameLoop;
 import org.graphics.Graphics;
 import org.graphics.Vector2;
+import org.input.Keyboard;
 import org.input.Mouse;
 
-public class Player extends GameObject{
+public class Player extends PhysicsObject{
 	
 	private int PlayerCount = 1;
 
@@ -23,13 +27,27 @@ public class Player extends GameObject{
 	}
 
 	public void update() {
-		position = Mouse.getPosition();
-	}
-	
-	public void render() {
-		Graphics.setColor(1,0.5f,0,1);
-		Graphics.setRotation(rotation);
-		Graphics.fillRect(position.x,position.y,size.x,size.y);
+		float Thrust = 0;
+		float Rot = 0;
+
+		if (Keyboard.keyDown(KeyEvent.VK_A)){
+			Rot--;
+		}
+		if (Keyboard.keyDown(KeyEvent.VK_D)){
+			Rot++;
+		}
+		if (Keyboard.keyDown(KeyEvent.VK_W)){
+			Thrust++;
+		}
+		if (Keyboard.keyDown(KeyEvent.VK_S)){
+			Thrust--;
+		}
+
+		rotation += Rot;
+		position.add(this.getLookVector().mult(Thrust));
+
+		//position.x += xInput; //* GameLoop.updateDelta();
+		//position.y += yInput; //* GameLoop.updateDelta();
 	}
 
 }

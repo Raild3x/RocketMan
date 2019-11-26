@@ -47,13 +47,13 @@ public class GameLoop {
 					if (render) {
 						Renderer.render();
 						fps++;
-						
+						/*
 						// FPS COUNTER
 						if (System.nanoTime()>=lastFPSCheck + 1000000000) {
 							System.out.println("FPS: "+fps);
 							fps = 0;
 							lastFPSCheck = System.nanoTime();
-						}
+						}*/
 					}
 					
 					// SLEEP UNTIL NEEDED FOR NEXT FRAME
@@ -81,5 +81,10 @@ public class GameLoop {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static float updateDelta(){
+		System.out.println(1.0f / 1000000000 * targetTime);
+		return 1.0f / 1000000000 * targetTime;
 	}
 }

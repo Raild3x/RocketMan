@@ -10,8 +10,8 @@ import com.jogamp.opengl.GLProfile;
 public class Renderer {
 	private static GLWindow window = null;
 	
-	public static int WIDTH = 640;
-	public static int HEIGHT = 400;
+	public static int WIDTH = 800;
+	public static int HEIGHT = 550;
 	public static float unitsWide = 10;
 	
 	public static void init() {

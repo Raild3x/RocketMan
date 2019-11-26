@@ -11,7 +11,8 @@ public class Main {
 
 		//TESTCODE
 		Player p1 = new Player();
-		p1.size = new Vector2(15,30);
+		p1.size = new Vector2(30,20);
+		p1.position = new Vector2(100,100);
 		World.addObject(p1);
 	}
 

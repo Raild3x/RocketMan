@@ -16,7 +16,7 @@ public class Graphics {
 		float w = width/2, h = height/2;
 		
 		gl.glTranslatef(x, y, 0); //set rotation data
-		gl.glRotatef(-rotation, 0, 0, 1);
+		gl.glRotatef(rotation, 0, 0, 1);
 		
 		gl.glColor4f(red, green, blue, alpha); //drawRect
 		gl.glBegin(GL2.GL_QUADS);
@@ -26,7 +26,7 @@ public class Graphics {
 			gl.glVertex2f(-w, h);
 		gl.glEnd();
 		
-		gl.glRotatef(rotation, 0, 0, 1); //reset
+		gl.glRotatef(-rotation, 0, 0, 1); //reset
 		gl.glTranslatef(-x, -y, 0);
 	}
 	

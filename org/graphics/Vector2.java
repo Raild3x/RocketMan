@@ -76,13 +76,15 @@ public class Vector2 {
 	}
 	
 	//MULTIPLICATION
-	public void mult(float v) {
+	public Vector2 mult(float v) {
 		x = x*v;
 		y = y*v;
+		return this;
 	}
-	public void mult(int v) {
+	public Vector2 mult(int v) {
 		x = x*v;
 		y = y*v;
+		return this;
 	}
 	
 	public static Vector2 mult(Vector2 a, float v) {
