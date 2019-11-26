@@ -9,9 +9,20 @@ public abstract class PhysicsObject extends GameObject {
     public boolean anchored = false;
     public boolean canCollide = true;
 
+    // Gives the look vector of the PO
     public Vector2 getLookVector(){
         double rot = Math.toRadians(rotation);
         return new Vector2(Math.cos(rot), Math.sin(rot));
+    }
+
+    public Vector2 getVectorFromAngle(float rota){
+        double rot = Math.toRadians(rota);
+        return new Vector2(Math.cos(rot), Math.sin(rot));
+    }
+
+    // lets you pass a vector position and it will return the rotation needed to face that point
+    public float getRotationFromVector(Vector2 other){
+        return (float) Math.atan2(other.x,other.y);
     }
     
     public void update() {

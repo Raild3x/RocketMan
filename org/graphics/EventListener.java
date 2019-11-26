@@ -1,6 +1,7 @@
 package org.graphics;
 
 import org.engine.GameLoop;
+import org.world.Camera;
 import org.world.World;
 
 import com.jogamp.opengl.GL2;
@@ -17,7 +18,10 @@ public class EventListener implements GLEventListener{
 		
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		
+		Camera.update();
+		gl.glTranslatef(-Camera.position.x, -Camera.position.y,0);
 		World.render();
+		gl.glTranslatef(Camera.position.x, Camera.position.y,0);
 	}
 
 
@@ -42,10 +46,10 @@ public class EventListener implements GLEventListener{
 		gl.glMatrixMode(GL2.GL_PROJECTION);
 		gl.glLoadIdentity(); // sets everything to zero
 		
-		float unitsTall = Renderer.getWindowHeight() / (Renderer.getWindowWidth() / Renderer.unitsWide);
+		Renderer.unitsTall = Renderer.getWindowHeight() / (Renderer.getWindowWidth() / Renderer.unitsWide);
 		// Define the coordinate system
-		//gl.glOrtho(-Renderer.unitsWide/2, Renderer.unitsWide/2, -unitsTall/2, unitsTall/2, -1, 1);
-		gl.glOrtho(0, width, height, 0, -1, 1);
+		gl.glOrtho(-Renderer.unitsWide/2, Renderer.unitsWide/2, -Renderer.unitsTall/2, Renderer.unitsTall/2, -1, 1);
+		//gl.glOrtho(0, width, height, 0, -1, 1);
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
 	}
 

@@ -3,10 +3,12 @@ package org.world;
 import org.graphics.Vector2;
 
 public class Camera {
-    public Vector2 position = new Vector2();
-    public GameObject focus;
+    public static Vector2 position = new Vector2();
+    public static PhysicsObject focus;
 
-    public void update(){
-
+    public static void update(){
+        if (focus != null){
+            position = focus.position;
+        }
     }
 }
