@@ -1,13 +1,11 @@
 package org.graphics;
 
-import javax.swing.JFrame;
-
+import org.input.Keyboard;
 import org.input.Mouse;
 
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.util.FPSAnimator;
 
 public class Renderer {
 	private static GLWindow window = null;
@@ -27,6 +25,7 @@ public class Renderer {
 		window.requestFocus();
 		window.addGLEventListener(new EventListener());
 		window.addMouseListener(new Mouse());
+		window.addKeyListener(new Keyboard());
 		//window. //uncap fps?
 		
 		//FPSAnimator animator = new FPSAnimator(window, 60); // takes window and target fps

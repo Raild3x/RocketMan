@@ -2,9 +2,6 @@ package org.world;
 
 import java.util.ArrayList;
 
-import org.graphics.Graphics;
-import org.input.Mouse;
-
 public class World {
 	
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -23,6 +20,10 @@ public class World {
 		for (GameObject obj: gameObjects) {
 			obj.render();
 		}
+	}
+
+	public static void addObject(GameObject obj){
+		gameObjects.add(obj);
 	}
 	
 	

@@ -76,10 +76,6 @@ public class Vector2 {
 	}
 	
 	//MULTIPLICATION
-	public void mult(double v) {
-		x = (float) (x*v);
-		y = (float) (y*v);
-	}
 	public void mult(float v) {
 		x = x*v;
 		y = y*v;

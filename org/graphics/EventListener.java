@@ -1,7 +1,6 @@
 package org.graphics;
 
 import org.engine.GameLoop;
-import org.input.Mouse;
 import org.world.World;
 
 import com.jogamp.opengl.GL2;
