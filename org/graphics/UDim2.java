@@ -18,12 +18,12 @@ public class UDim2 {
     }
 
     // ADDITION
-    public UDim2 add(UDim2 a, UDim2 b){
+    public static UDim2 add(UDim2 a, UDim2 b){
         return new UDim2(UDim.add(a.x, b.x), UDim.add(a.y, b.y)); 
     }
 
     // SUBTRACTION
-    public UDim2 sub(UDim2 a, UDim2 b){
+    public static UDim2 sub(UDim2 a, UDim2 b){
         return new UDim2(UDim.sub(a.x, b.x), UDim.sub(a.y, b.y)); 
     }
     
@@ -35,7 +35,7 @@ public class UDim2 {
     }
 
     public String toString(){
-        return "X: Scale:"+x.Scale+" Offset: "+y.Offset+" Y: Scale: "+y.Scale+" Offset: "+y.Offset;
+        return "X: Scale: "+x.Scale+" Offset: "+y.Offset+" Y: Scale: "+y.Scale+" Offset: "+y.Offset;
     }
     
 }
