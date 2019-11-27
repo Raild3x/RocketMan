@@ -22,7 +22,11 @@ public abstract class PhysicsObject extends GameObject {
 
     // lets you pass a vector position and it will return the rotation needed to face that point
     public float getRotationFromVector(Vector2 other){
-        return (float) Math.atan2(other.x,other.y);
+        return (float) Math.atan2(other.x-position.x,other.y-position.y);
+    }
+
+    public float getMass(){
+        return 1;
     }
     
     public void update() {

@@ -3,10 +3,9 @@ package org.world;
 import com.jogamp.newt.event.KeyEvent;
 
 import org.engine.GameLoop;
-import org.graphics.Graphics;
 import org.graphics.Vector2;
 import org.input.Keyboard;
-import org.input.Mouse;
+
 
 public class Player extends PhysicsObject{
 	
