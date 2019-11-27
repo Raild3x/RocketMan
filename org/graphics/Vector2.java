@@ -23,6 +23,10 @@ public class Vector2 {
 		this.x = (float) x;
 		this.y = (float) y;
 	}
+
+	public String toString(){
+		return "X: "+x+"\tY: "+y;
+	}
 	
 	public boolean equals(Vector2 other) {
 		return (this.x == other.x && this.y == other.y);
@@ -46,13 +50,14 @@ public class Vector2 {
 	}
 	
 	// Turns the vector into its Unit Vector (length of 1)
-	public void normalize() {
+	public Vector2 normalize() {
 		double length = Math.sqrt(x*x+y*y);
 		if (length != 0.0) {
 			float s = 1.0f / (float)length;
 			x = x*s;
 			y = y*s;
 		}
+		return this;
 	}
 	
 	// BASIC MATH METHODS

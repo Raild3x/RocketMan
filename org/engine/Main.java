@@ -9,9 +9,9 @@ public class Main {
 		Renderer.init();
 		GameLoop.start();
 
-		World.addObject(new Planet(new Vector2(10,8), 5.5f, 1, 0));
-		World.addObject(new Planet(new Vector2(-15,11), 9, 2.5f, 0));
-		World.addObject(new Planet(new Vector2(15,-25), 20, 2, 0));
+		//World.addObject(new Planet(new Vector2(10,8), 5.5f, 1, 0));
+		World.addCelestialBody(new Planet(new Vector2(-25,24), 12, 2.5f, 0));
+		World.addCelestialBody(new Planet(new Vector2(15,-45), 25, 2, 0));
 
 		//TESTCODE
 		Player p1 = new Player();

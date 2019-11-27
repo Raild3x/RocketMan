@@ -4,6 +4,8 @@ import org.graphics.Graphics;
 import org.graphics.Vector2;
 
 public abstract class PhysicsObject extends GameObject {
+
+    public Vector2 velocity = new Vector2();
     public Vector2 position;
     public Vector2 size;
     public boolean anchored = false;
@@ -26,7 +28,7 @@ public abstract class PhysicsObject extends GameObject {
     }
 
     public float getMass(){
-        return 1;
+        return 1000;
     }
     
     public void update() {

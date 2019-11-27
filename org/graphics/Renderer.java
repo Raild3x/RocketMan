@@ -12,7 +12,7 @@ public class Renderer {
 	
 	public static int WIDTH = 800;
 	public static int HEIGHT = 550;
-	public static float unitsWide = 80;
+	public static float unitsWide = 100;
 	public static float unitsTall = 10;
 	
 	public static void init() {

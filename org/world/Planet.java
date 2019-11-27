@@ -25,16 +25,21 @@ public class Planet extends PhysicsObject {
         System.out.println("NewPlanet");
     }
 
+    public float getMass(){
+        return (float) (4 * Math.PI * Math.pow(radius,2));
+    }
+
     //calculates strength and direction of gravity pull based off of a given position
     public Vector2 getGravity(PhysicsObject obj){
         float dist = (float) position.distance(obj.position);
         float strength = (float) ((G * getMass() * obj.getMass()) / (dist * dist));
-        return new Vector2();
+        Vector2 direction = Vector2.sub(position,obj.position);
+        return direction.normalize().mult(strength);
     }
 
     public void update(){
         rotation += 1/radius;
-
+        //System.out.println("Gravity: "+getGravity(Camera.focus));
     }
 
     public void render(){
