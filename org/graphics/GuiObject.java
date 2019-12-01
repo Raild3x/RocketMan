@@ -29,13 +29,30 @@ abstract class GuiObject {
     private GuiObject SelectionImageObject; 
 
     // UDIM2 VALUES
-    private UDim2 Position; 
+    private UDim2 Position;
     private UDim2 Size;
 
     // FLOAT VALUES
     private float Rotation;
     private float Transparency;
     private float BackGroundTransparency; 
+
+    public UDim2 getPosition() {
+        return this.Position;
+    }
+
+    public void setPosition(UDim2 Position) {
+        this.Position = Position;
+    }
+
+    public UDim2 getSize() {
+        return this.Size;
+    }
+
+    public void setSize(UDim2 Size) {
+        this.Size = Size;
+    }
+
 
 
     public void TweenPosition(UDim2 endPosition, int easingDirection, int easingStyle, float time, boolean override){
