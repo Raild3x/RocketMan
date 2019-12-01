@@ -25,7 +25,7 @@ public class Vector2 {
 	}
 
 	public String toString(){
-		return "X: "+x+"\tY: "+y;
+		return "X: "+this.x+"\tY: "+this.y;
 	}
 	
 	public boolean equals(Vector2 other) {
@@ -82,8 +82,8 @@ public class Vector2 {
 	
 	//MULTIPLICATION
 	public Vector2 mult(float v) {
-		x = x*v;
-		y = y*v;
+		this.x = this.x*v;
+		this.y = this.y*v;
 		return this;
 	}
 	public Vector2 mult(int v) {
@@ -99,20 +99,22 @@ public class Vector2 {
 		return new Vector2(a.x*v,a.y*v);
 	}
 	public static Vector2 mult(float v, Vector2 a) {
-		return new Vector2(a.x*v,a.y*v);
+		return mult(a,v);
 	}
 	public static Vector2 mult(int v, Vector2 a) {
-		return new Vector2(a.x*v,a.y*v);
+		return mult(a,v);
 	}
 	
 	//DIVISION
-	public void div(float v) {
-		x = x/v;
-		y = y/v;
+	public Vector2 div(float v) {
+		this.x = this.x/v;
+		this.y = this.y/v;
+		return this;
 	}
-	public void div(int v) {
-		x = x/v;
-		y = y/v;
+	public Vector2 div(int v) {
+		this.x = this.x/v;
+		this.y = this.y/v;
+		return this;
 	}
 	
 	public static Vector2 div(Vector2 a, float v) {
@@ -122,10 +124,10 @@ public class Vector2 {
 		return new Vector2(a.x/v,a.y/v);
 	}
 	public static Vector2 div(float v, Vector2 a) {
-		return new Vector2(a.x/v,a.y/v);
+		return div(a,v);
 	}
 	public static Vector2 div(int v, Vector2 a) {
-		return new Vector2(a.x/v,a.y/v);
+		return div(a,v);
 	}
 	
 	//COMPLEX VECTOR METHODS
