@@ -1,6 +1,6 @@
 package org.graphics;
 
-public class GuiObject {
+abstract class GuiObject {
 
     //public Color3 BackgroundColor; 
     //public Color3 BorderColor3;
