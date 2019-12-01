@@ -34,6 +34,18 @@ public class GuiObject {
     public float BackGroundTransparency; 
 
     public GuiObject SelectionImageObject;
+
+    public void TweenPosition(UDim2 endPosition, int easingDirection, int easingStyle, float time, boolean override){
+
+    }
+
+    public void TweenSize(UDim2 endSize, int easingDirection, int easingStyle, float time, boolean override){
+
+    }
+
+    public void TweenSizeAndPosition( UDim2 endSize , UDim2 endPosition , int easingDirection , int easingStyle , float time , boolean override){
+
+    }
     
   
 
