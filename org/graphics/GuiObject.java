@@ -8,32 +8,35 @@ abstract class GuiObject {
     //public SizeConstraint SizeConstraint;
 
     // BOOL VALUES
-    public boolean Active;
-    public boolean ClipsDescendants; 
-    public boolean Selectable; 
-    public boolean Visible;
+    private boolean Active;
+    private boolean ClipsDescendants; 
+    private boolean Selectable; 
+    private boolean Visible;
 
-    //VECTOR VALUES
-    public Vector2 AnchorPoint;
+    // VECTOR VALUES
+    private Vector2 AnchorPoint;
 
+    // INT VALUES
+    private int BorderSizePixel;
+    private int LayOutOrder;
+    private int ZIndex;
 
-    public int BorderSizePixel;
-    public int LayOutOrder;
-    public int ZIndex;
+    // GUI OBJECT VALUES
+    private GuiObject NextSelectionDown; 
+    private GuiObject NextSelectionLeft; 
+    private GuiObject NextSelectionRight; 
+    private GuiObject NextSelectionUp; 
+    private GuiObject SelectionImageObject; 
 
-    public GuiObject NextSelectionDown; 
-    public GuiObject NextSelectionLeft; 
-    public GuiObject NextSelectionRight; 
-    public GuiObject NextSelectionUp; 
+    // UDIM2 VALUES
+    private UDim2 Position; 
+    private UDim2 Size;
 
-    public UDim2 Position; 
-    public UDim2 Size;
+    // FLOAT VALUES
+    private float Rotation;
+    private float Transparency;
+    private float BackGroundTransparency; 
 
-    public float Rotation;
-    public float Transparency;
-    public float BackGroundTransparency; 
-
-    public GuiObject SelectionImageObject;
 
     public void TweenPosition(UDim2 endPosition, int easingDirection, int easingStyle, float time, boolean override){
 
