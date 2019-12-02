@@ -2,51 +2,40 @@ package org.util;
 
 import org.graphics.Graphics;
 import org.graphics.Renderer;
+import org.graphics.Vector2;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class QuadTree {
 
-    public class Point {
+    /*public class Point {
         public float x,y;
         public Point(float x, float y){
             this.x = x;
             this.y = y;
         }
-    }
+    }*/
     
-    public class Rectangle {
-        public float x,y,w,h;
-        public Rectangle(float x, float y, float w, float h){
-            this.x = x;
-            this.y = y;
-            this.h = h;
-            this.w = w;
-        }
-
-        public boolean contains(Point p){
-            return (p.x > this.x-this.w) && (p.x < this.x+this.w) && (p.y > this.y-this.h) && (p.y < this.y+this.h);
-        }
-    }
+    
 
     private QuadTree northwest, northeast, southwest, southeast;
     private Rectangle boundary;
     private int capacity;
     private int pointCount;
-    private Point[] points;
+    private Vector2[] points;
     private boolean divided = false;
 
     public QuadTree(Rectangle boundary, int capacity){
         this.boundary = boundary;
         this.capacity = capacity;
-        this.points = new Point[4];
+        this.points = new Vector2[this.capacity];
         this.pointCount = 0;
     }
 
     public QuadTree(float x, float y, float w, float h, int capacity){
         this.boundary = new Rectangle(x,y,w,h);
         this.capacity = capacity;
-        this.points = new Point[4];
+        this.points = new Vector2[this.capacity];
         this.pointCount = 0;
     }
 
@@ -54,7 +43,7 @@ public class QuadTree {
         String s = "QuadTree: "+super.toString()+"\n\tBoundary: "+this.boundary.toString()
         +"\n\tCapacity: "+this.capacity+"\n\tDivided: "+this.divided+"\n\tPoints:\n";
         for (int i = 0; i < this.pointCount; i++){
-            s+="\t\tX: "+this.points[i].x+"\tY: "+this.points[i].y+"\n";
+            s+="\t\tX: "+this.points[i].getX()+"\tY: "+this.points[i].getY()+"\n";
         }
         return s;
     }
@@ -81,7 +70,7 @@ public class QuadTree {
         this.points = null;
     }
 
-    public void insert(Point p) {
+    public void insert(Vector2 p) {
         if (!this.boundary.contains(p))
             return;
         
@@ -99,6 +88,31 @@ public class QuadTree {
         }
     }
 
+    public ArrayList<Vector2> queryBox(Rectangle other){
+        ArrayList<Vector2> found = new ArrayList<Vector2>();
+        this.queryBox(other, found);
+        return found;
+    }
+
+
+    public void queryBox(Rectangle other, ArrayList<Vector2> found){
+        if (!this.boundary.intersects(other)){
+            //empty array
+            return;
+        } else if (!this.divided) {
+            for (int i = 0; i < this.pointCount; i++){
+                Vector2 p = this.points[i];
+                if (other.contains(p))
+                    found.add(p);
+            }
+        } else {
+            this.northwest.queryBox(other, found);
+            this.northeast.queryBox(other, found);
+            this.southwest.queryBox(other, found);
+            this.southeast.queryBox(other, found);
+        }
+    }
+
     public void render(){
         Rectangle b = this.boundary;
         Graphics.setColor(0.5f, 0.5f, 0.5f, 0);
@@ -113,11 +127,11 @@ public class QuadTree {
         }
 
         Graphics.setColor(1,0,0,1);
-        Graphics.setPointSize(5);
+        Graphics.setPointSize(2);
         if (this.points != null){
             for (int i = 0; i < this.pointCount; i++){
-                Point p = this.points[i];
-                Graphics.drawPoint(p.x, p.y);
+                Vector2 p = this.points[i];
+                Graphics.drawPoint(p.getX(), p.getY());
             }
         }
     }

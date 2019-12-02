@@ -1,8 +1,10 @@
 package org.engine;
 
+import java.util.ArrayList;
+
 import org.graphics.*;
-import org.util.QuadTree;
-import org.util.QuadTree.Point;
+import org.input.*;
+import org.util.*;
 import org.world.*;
 
 public class Main {
@@ -14,24 +16,43 @@ public class Main {
 		//QUAD TREE TEST
 		float width = Renderer.unitsWide;
         float height = Renderer.unitsTall;
-        //Rectangle boundary = new Rectangle(200,200, 200,200);
-        //QuadTree qt = new QuadTree(boundary, 4);
-        QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
+        
+		//QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
+		Rectangle boundary = new Rectangle(0,0, width/2,height/2);
+		QuadTree qt = new QuadTree(boundary, 16);
+			
+		for (int i = 0; i < 10000; i++){
+			Vector2 p = new Vector2((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
+			qt.insert(p);
+		}
 
-		GameLoop.PostRenderstep.Connect(z -> {
-			qt.render();
+		GameLoop.PostRenderstep.Connect(nil -> {
+			long st = System.nanoTime();
+			
+			//qt.render();
+			
+
+			Rectangle search = new Rectangle(Mouse.getWorldX(),-Mouse.getWorldY(), 12,6);
+			Graphics.setColor(0,0,0,0);
+			Graphics.setBorderColor(0,1,0,1);
+			search.draw();
+			
+			ArrayList<Vector2> points = qt.queryBox(search);
+			System.out.println((System.nanoTime()-st));
+			for (int i = 0; i < points.size(); i++){
+				Vector2 p = points.get(i);
+				Graphics.setColor(0,1,0,1);
+				Graphics.setPointSize(2);
+				Graphics.drawPoint(p.getX(), p.getY());
+			}
 		});
 
-        for (int i = 0; i < 300; i++){
-            Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
-			qt.insert(p);
-			try{
-				Thread.sleep(20);
-				//System.out.println("NEWPOINT");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-		}
+        
+
+		/*Mouse.Moved.Connect(m -> {
+			System.out.println("Moved");
+			
+		});*/
 		
 		
 		

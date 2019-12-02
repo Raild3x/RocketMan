@@ -92,19 +92,19 @@ public class Graphics {
 	}
 
 	public static void drawCircle(float x, float y, float r, int num_segments){
-	/*	GL2 gl = EventListener.gl;
+		GL2 gl = EventListener.gl;
 		gl.glBegin(GL2.GL_LINE_LOOP);
 		for(int ii = 0; ii < num_segments; ii++)
 		{
-			float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);//get the current angle
+			float theta = 2.0f * 3.1415926f * ii / (num_segments);//get the current angle
 	
-			float x = r * cosf(theta);//calculate the x component
-			float y = r * sinf(theta);//calculate the y component
+			float cx = (float) (r * Math.cos(theta));//calculate the x component
+			float cy = (float) (r * Math.sin(theta));//calculate the y component
 	
-			glVertex2f(x + cx, y + cy);//output vertex
+			gl.glVertex2f(x + cx, y + cy);//output vertex
 	
 		}
-		gl.glEnd();*/
+		gl.glEnd();
 	}
 	
 	public static void setColor(float r, float g, float b, float a) {

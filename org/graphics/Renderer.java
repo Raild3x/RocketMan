@@ -11,7 +11,7 @@ public class Renderer {
 	private static GLWindow window = null;
 	
 	public static int WIDTH = 800;
-	public static int HEIGHT = 550;
+	public static int HEIGHT = 600;
 	public static float unitsWide = 100;
 	public static float unitsTall = 10;
 	

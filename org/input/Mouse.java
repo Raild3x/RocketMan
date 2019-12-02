@@ -3,6 +3,7 @@ package org.input;
 import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
+import org.engine.Signal;
 import org.graphics.Renderer;
 import org.graphics.Vector2;
 import org.world.Camera;
@@ -11,6 +12,8 @@ public class Mouse implements MouseListener{
 
 	private static int mouseX = 0;
 	private static int mouseY = 0;
+
+	public static final Signal<MouseEvent> Moved = new Signal<>();
 
 	public void mouseClicked(MouseEvent e) {
 		System.out.println(e.getX()+" / "+e.getY());
@@ -33,6 +36,7 @@ public class Mouse implements MouseListener{
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
+		Moved.Fire(e);
 		//System.out.println("Moved");
 	}
 
