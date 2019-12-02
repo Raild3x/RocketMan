@@ -4,7 +4,7 @@ import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
 import org.graphics.Renderer;
-import org.graphics.Vector2;
+import org.util.Vector2;
 import org.world.Camera;
 
 public class Mouse implements MouseListener{

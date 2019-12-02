@@ -1,7 +1,7 @@
 package org.world;
 
 import org.graphics.Graphics;
-import org.graphics.Vector2;
+import org.util.Vector2;
 
 public abstract class PhysicsObject extends GameObject {
 

@@ -1,5 +1,8 @@
 package org.graphics;
 
+import  org.util.UDim2;
+import  org.util.Vector2;
+
 abstract class GuiObject {
 
     //public Color3 BackgroundColor; 

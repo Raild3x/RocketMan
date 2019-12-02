@@ -1,4 +1,4 @@
-package org.graphics;
+package org.util;
 
 public class Vector2 {
 

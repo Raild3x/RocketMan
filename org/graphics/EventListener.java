@@ -8,6 +8,9 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 
+import  org.util.UDim2;
+import  org.util.Vector2;
+
 public class EventListener implements GLEventListener{
 	
 	public static GL2 gl = null;
