@@ -38,6 +38,7 @@ public class Graphics {
 		gl.glTranslatef(-x, -y, 0);
 	}
 
+
 	public static void fillRectWithBorders(float x, float y, float width, float height) {
 		GL2 gl = EventListener.gl;
 		float w = width/2, h = height/2;

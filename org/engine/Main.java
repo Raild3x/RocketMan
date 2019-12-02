@@ -4,6 +4,7 @@ import org.graphics.*;
 import org.util.QuadTree;
 import org.util.QuadTree.Point;
 import org.world.*;
+import org.util.UDim2; 
 
 public class Main {
 
@@ -16,15 +17,18 @@ public class Main {
         float height = Renderer.unitsTall;
         //Rectangle boundary = new Rectangle(200,200, 200,200);
         //QuadTree qt = new QuadTree(boundary, 4);
-        QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
+        //QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
 
 		GameLoop.PostRenderstep.Connect(z -> {
-			qt.render();
+			//qt.render();
 		});
 
+		Frame obj = new Frame(new UDim2(0, 10, 0, 10), new UDim2(.5f, 1, .5f, 1));
+		World.addObject(obj);
+
         for (int i = 0; i < 300; i++){
-            Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
-			qt.insert(p);
+            //Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
+			//qt.insert(p);
 			try{
 				Thread.sleep(20);
 				//System.out.println("NEWPOINT");

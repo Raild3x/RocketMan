@@ -2,8 +2,11 @@ package org.graphics;
 
 import  org.util.UDim2;
 import  org.util.Vector2;
+import  org.graphics.Graphics;
+import  org.world.GameObject; 
+import  org.world.Camera;
 
-abstract class GuiObject {
+abstract class GuiObject extends GameObject{
 
     //public Color3 BackgroundColor; 
     //public Color3 BorderColor3;
@@ -74,7 +77,26 @@ abstract class GuiObject {
         this.Position = new UDim2();
         //etc...
     }
+
+    public GuiObject(UDim2 pos, UDim2 size){
+        this.setPosition(pos);
+        this.setSize(size);
+    }
+
+    public Vector2 convertUDim2(UDim2 udim){
+        float x = (Renderer.getWindowWidth()*udim.x.Scale) + udim.x.Offset;
+        float y = (Renderer.getWindowHeight()*udim.y.Scale) + udim.y.Offset;
+
+        return new Vector2((int) x, (int) y); 
+    }
     
+    public void render(){
+        Vector2 pixelPosition = convertUDim2(this.Position);
+
+        float x = (Renderer.unitsWide / Renderer.getWindowWidth() * pixelPosition.getX() - Renderer.unitsWide / 2) + Camera.getPosition().getX();
+        float y = (Renderer.unitsWide / Renderer.getWindowHeight() * pixelPosition.getY() - Renderer.unitsWide / 2) + Camera.getPosition().getY();
+        Graphics.fillRect(x, y, 10, 10);
+    }
   
 
     //INHERITANCE: GuiBase2d, Instance
