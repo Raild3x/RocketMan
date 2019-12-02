@@ -63,11 +63,11 @@ public class Mouse implements MouseListener{
 	}
 
 	public static float getWorldX(){
-		return (Renderer.unitsWide / Renderer.getWindowWidth() * mouseX - Renderer.unitsWide / 2) + Camera.position.x;
+		return (Renderer.unitsWide / Renderer.getWindowWidth() * mouseX - Renderer.unitsWide / 2) + Camera.getPosition().getX();
 	}
 
 	public static float getWorldY(){
-		return (Renderer.unitsTall / Renderer.getWindowHeight() * mouseY - Renderer.unitsTall / 2) + Camera.position.y;
+		return (Renderer.unitsTall / Renderer.getWindowHeight() * mouseY - Renderer.unitsTall / 2) + Camera.getPosition().getY();
 	}
 
 	public static Vector2 getWorldPosition(){

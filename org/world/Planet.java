@@ -12,10 +12,9 @@ public class Planet extends PhysicsObject {
     public Vector2[] points = new Vector2[36];
 
     public Planet(Vector2 position, float radius, float amplitude, float rotation){
-        this.position = position;
+        super(position,rotation);
         this.radius = radius;
         this.amplitude = amplitude;
-        this.rotation = rotation;
 
         for (int i = 0; i < points.length; i++){
             float height = (float) Math.random() * amplitude + radius;
@@ -31,21 +30,21 @@ public class Planet extends PhysicsObject {
 
     //calculates strength and direction of gravity pull based off of a given position
     public Vector2 getGravity(PhysicsObject obj){
-        float dist = (float) position.distance(obj.position);
+        float dist = (float) this.getPosition().distance(obj.getPosition());
         float strength = (float) ((G * getMass() * obj.getMass()) / (dist * dist));
-        Vector2 direction = Vector2.sub(position,obj.position);
+        Vector2 direction = Vector2.sub(this.getPosition(),obj.getPosition());
         return direction.normalize().mult(strength);
     }
 
     public void update(){
-        rotation += 1/radius;
+        this.setRotation(this.getRotation() + 1/radius);
         //System.out.println("Gravity: "+getGravity(Camera.focus));
     }
 
     public void render(){
         Graphics.setColor(0.2f,0.2f,0.2f,1);
-        Graphics.setRotation(rotation);
-        Graphics.drawPolygon(position, points);
+        Graphics.setRotation(this.getRotation());
+        Graphics.drawPolygon(this.getPosition(), points);
     }
 
 }
