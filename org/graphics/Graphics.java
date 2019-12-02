@@ -32,21 +32,21 @@ public class Graphics {
 
 	public static void drawPolygon(Vector2 center, Vector2[] points){
 		GL2 gl = EventListener.gl;
-		gl.glTranslatef(center.x, center.y, 0); //set rotation data
+		gl.glTranslatef(center.getX(), center.getY(), 0); //set rotation data
 		gl.glRotatef(rotation, 0, 0, 1);
 		gl.glColor4f(red, green, blue, alpha);
 
 		gl.glBegin(GL2.GL_TRIANGLE_STRIP);
 		for (int i = 0; i < points.length; i++){
 			Vector2 p = points[i];
-			gl.glVertex2f(p.x,p.y);
+			gl.glVertex2f(p.getX(), p.getY());
 			gl.glVertex2f(0,0);
 		}
-		gl.glVertex2f(points[0].x,points[0].y);
+		gl.glVertex2f(points[0].getX(), points[0].getY());
 		gl.glEnd();
 
 		gl.glRotatef(-rotation, 0, 0, 1); //reset
-		gl.glTranslatef(-center.x, -center.y, 0);
+		gl.glTranslatef(-center.getX(), -center.getY(), 0);
 	}
 
 	public static void drawCircle(float x, float y, float r, int num_segments){

@@ -2,7 +2,7 @@ package org.graphics;
 
 public class Vector2 {
 
-	public float x,y;
+	private float x,y;
 	
 	public Vector2() {
 		this.x = 0.0f;
@@ -59,12 +59,21 @@ public class Vector2 {
 		}
 		return this;
 	}
+
+	public float getX(){
+		return this.x;
+	}
+
+	public float getY(){
+		return this.y;
+	}
 	
 	// BASIC MATH METHODS
 	// ADDITION
-	public void add(Vector2 other) {
+	public Vector2 add(Vector2 other) {
 		this.x += other.x;
 		this.y += other.y;
+		return this;
 	}
 	
 	public static Vector2 add(Vector2 a, Vector2 b) {
@@ -72,9 +81,10 @@ public class Vector2 {
 	}
 	
 	//SUBTRACTION
-	public void sub(Vector2 other) {
+	public Vector2 sub(Vector2 other) {
 		this.x -= other.x;
 		this.y -= other.y;
+		return this;
 	}
 	public static Vector2 sub(Vector2 a, Vector2 b) {
 		return new Vector2(a.x-b.x,a.y-b.y);
@@ -87,8 +97,8 @@ public class Vector2 {
 		return this;
 	}
 	public Vector2 mult(int v) {
-		x = x*v;
-		y = y*v;
+		this.x = this.x*v;
+		this.y = this.y*v;
 		return this;
 	}
 	
@@ -145,7 +155,7 @@ public class Vector2 {
 		return Math.acos(this.dot(other)/(this.length()*other.length()));
 	}
 	
-	// Return true if given Vectors are perpendicular
+	// Return true if given Vectors are perpendicular (INCOMPLETE)!!!!
 	public boolean isOrthogonal(Vector2 other) {
 		return false;
 	}

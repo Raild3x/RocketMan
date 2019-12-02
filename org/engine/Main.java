@@ -15,13 +15,15 @@ public class Main {
 
 		//TESTCODE
 		Player p1 = new Player();
-		p1.size = new Vector2(3,2);
-		Camera.focus = p1;
+		p1.setSize(new Vector2(3,2));
+		Camera.setFocus(p1);
+
+		// TEST UDIM2
 		UDim2 t1 = new UDim2(5.f, 1, 0.5f, 0);
 		UDim2 t2 = new UDim2(6.f, 0, 0.7F, 1);
 		UDim2 t3 = UDim2.add(t1, t2); 
 		System.out.println(t3);
-		//p1.position = new Vector2(100,100);
+
 		World.addObject(p1);
 	}
 

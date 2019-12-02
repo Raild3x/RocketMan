@@ -25,7 +25,7 @@ public abstract class GameObject {
 		return x*(1-alpha) + y*alpha;
 	}
 
-	// GETTERS AND SETTERS
+	//---------------GETTERS AND SETTERS--------------------//
 
 	public String getName(){
 		return this.name;

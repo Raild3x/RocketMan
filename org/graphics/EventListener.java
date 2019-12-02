@@ -19,9 +19,9 @@ public class EventListener implements GLEventListener{
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		
 		Camera.update();
-		gl.glTranslatef(-Camera.position.x, -Camera.position.y,0);
+		gl.glTranslatef(-Camera.getPosition().getX(), -Camera.getPosition().getY(),0);
 		World.render();
-		gl.glTranslatef(Camera.position.x, Camera.position.y,0);
+		gl.glTranslatef(Camera.getPosition().getX(), Camera.getPosition().getY(),0);
 	}
 
 

@@ -14,17 +14,15 @@ public class Player extends PhysicsObject{
 	public final float maxVel = 15;
 
 	public Player() {
-		name = "Player"+PlayerCount;
+		super();
+		this.setName("Player"+PlayerCount);
 		PlayerCount++;
-		position = new Vector2();
-		size = new Vector2();
 	}
 
 	public Player(Vector2 size, Vector2 pos) {
-		name = "Player"+PlayerCount;
+		super(pos,size);
+		this.setName("Player"+PlayerCount);
 		PlayerCount++;
-		this.position = pos;
-		this.size = size;
 	}
 
 	public void update() {
@@ -47,12 +45,12 @@ public class Player extends PhysicsObject{
 		//vel += Thrust == 0 ? (vel != 0 ? (vel > 0 ? -0.2f : 0.2f) : 0) : Thrust/4; // calculate decrease in velocity if not moving
 		//vel += Thrust/4;
 		//vel = Math.max(-maxVel, Math.min(maxVel, vel)); // clamp velocity
-		rotation += Rot;
-		velocity.add(this.getLookVector().mult(Thrust)); //Add thrust movement
+		this.setRotation(this.getRotation() + Rot);
+		this.setVelocity(this.getVelocity().add(this.getLookVector().mult(Thrust))); //Add thrust movement
 		for (Planet obj: World.celestialBodies){
-			velocity.add(obj.getGravity(this));
+			this.setVelocity(this.getVelocity().add(obj.getGravity(this)));
 		}
-		position.add(Vector2.mult(velocity, GameLoop.updateDelta()));
+		this.setPosition(this.getPosition().add(Vector2.mult(this.getVelocity(), GameLoop.updateDelta())));
 
 		//position.x += xInput; //;
 		//position.y += yInput; //* GameLoop.updateDelta();

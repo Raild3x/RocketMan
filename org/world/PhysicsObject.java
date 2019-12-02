@@ -17,6 +17,24 @@ public abstract class PhysicsObject extends GameObject {
 
     //-------------------------------------CORE METHODS-------------------------------//
 
+    public PhysicsObject(){
+        this.position = new Vector2();
+        this.size = new Vector2();
+        this.rotation = 0;
+    }
+
+    public PhysicsObject(Vector2 pos, Vector2 size){
+        this.position = pos;
+        this.size = size;
+        this.rotation = 0;
+    }
+
+    public PhysicsObject(Vector2 pos, float rotation){
+        this.position = pos;
+        this.size = new Vector2();
+        this.rotation = rotation;
+    }
+
     public void update() {
 		// Implement in subclass?
 	}
@@ -24,7 +42,7 @@ public abstract class PhysicsObject extends GameObject {
 	public void render() {
 		Graphics.setColor(1,0.5f,0,1);
 		Graphics.setRotation(this.rotation);
-		Graphics.fillRect(position.x,position.y,size.x,size.y);
+		Graphics.fillRect(position.getX(), position.getY(), size.getX(), size.getY());
     }
 
     public String toString(){
@@ -46,7 +64,7 @@ public abstract class PhysicsObject extends GameObject {
 
     // lets you pass a vector position and it will return the rotation needed to face that point
     public float getRotationFromVector(Vector2 other){
-        return (float) Math.atan2(other.x-position.x,other.y-position.y);
+        return (float) Math.atan2(other.getX()-position.getX(),other.getY()-position.getY());
     }
     
     
