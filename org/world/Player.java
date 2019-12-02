@@ -3,7 +3,7 @@ package org.world;
 import com.jogamp.newt.event.KeyEvent;
 
 import org.engine.GameLoop;
-import org.graphics.Vector2;
+import org.util.Vector2;
 import org.input.Keyboard;
 
 

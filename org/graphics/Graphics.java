@@ -2,6 +2,8 @@ package org.graphics;
 
 import com.jogamp.opengl.GL2;
 
+import  org.util.Vector2;
+
 public class Graphics {
 	
 	private static float red = 1;
@@ -35,6 +37,7 @@ public class Graphics {
 		gl.glRotatef(-rotation, 0, 0, 1); //reset
 		gl.glTranslatef(-x, -y, 0);
 	}
+
 
 	public static void fillRectWithBorders(float x, float y, float width, float height) {
 		GL2 gl = EventListener.gl;

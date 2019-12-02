@@ -2,6 +2,7 @@ package org.engine;
 
 import org.graphics.Renderer;
 import org.world.World;
+import org.engine.Signal;
 
 class Empty{};
 

@@ -1,6 +1,6 @@
 package org.world;
 
-import org.graphics.Vector2;
+import org.util.Vector2;
 
 public class Camera {
     private static Vector2 position = new Vector2();

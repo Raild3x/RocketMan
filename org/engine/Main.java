@@ -6,6 +6,7 @@ import org.graphics.*;
 import org.input.*;
 import org.util.*;
 import org.world.*;
+import org.util.*; 
 
 public class Main {
 
@@ -16,6 +17,7 @@ public class Main {
 		//QUAD TREE TEST
 		float width = Renderer.unitsWide;
         float height = Renderer.unitsTall;
+
         
 		//QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
 		Rectangle boundary = new Rectangle(0,0, width/2,height/2);
@@ -47,12 +49,25 @@ public class Main {
 			}
 		});
 
-        
+      
+		Frame obj = new Frame(new UDim2(0, 0, 0, 0), new UDim2(.5f, 1, .5f, 1));
+		World.addObject(obj);
 
-		/*Mouse.Moved.Connect(m -> {
-			System.out.println("Moved");
-			
-		});*/
+		GameLoop.Heartbeat.Connect(timePassed -> {
+			obj.setPosition(UDim2.add(obj.getPosition(), new UDim2(.01f,0,0,0)));
+		});
+
+        for (int i = 0; i < 300; i++){
+            //Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
+			//qt.insert(p);
+			try{
+				Thread.sleep(20);
+				//System.out.println("NEWPOINT");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+		}
+
 		
 		
 		
