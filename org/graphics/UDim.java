@@ -11,6 +11,11 @@ public class UDim {
         this.Offset = Offset; 
     }
 
+    public UDim(){
+        this.Offset = 0;
+        this.Scale = 0;
+    }
+
     // ADDITION
     public static UDim add(UDim a, UDim b){
         return new UDim(a.Scale+b.Scale, a.Offset+b.Offset); 
