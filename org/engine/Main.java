@@ -1,6 +1,8 @@
 package org.engine;
 
 import org.graphics.*;
+import org.util.QuadTree;
+import org.util.QuadTree.Point;
 import org.world.*;
 
 public class Main {
@@ -8,6 +10,32 @@ public class Main {
 	public static void main(String[] args) {
 		Renderer.init();
 		GameLoop.start();
+
+		//QUAD TREE TEST
+		float width = Renderer.unitsWide;
+        float height = Renderer.unitsTall;
+        //Rectangle boundary = new Rectangle(200,200, 200,200);
+        //QuadTree qt = new QuadTree(boundary, 4);
+        QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
+
+		GameLoop.PostRenderstep.Connect(z -> {
+			qt.render();
+		});
+
+        for (int i = 0; i < 300; i++){
+            Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
+			qt.insert(p);
+			try{
+				Thread.sleep(20);
+				//System.out.println("NEWPOINT");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+		}
+		
+		
+		
+		/*
 
 		//World.addObject(new Planet(new Vector2(10,8), 5.5f, 1, 0));
 		World.addCelestialBody(new Planet(new Vector2(-25,24), 12, 2.5f, 0));
@@ -25,6 +53,7 @@ public class Main {
 		System.out.println(t3);
 
 		World.addObject(p1);
+		*/
 	}
 
 }

@@ -35,6 +35,11 @@ public class Signal<E> {
             c.func.accept(x);
         }
     }
+    public void Fire(){
+        for (Connection c: this.connections){
+            c.func.accept(null);
+        }
+    }
 
     public Connection Connect(Consumer<E> func){
         Connection c = new Connection(this, func);

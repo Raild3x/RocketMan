@@ -20,7 +20,9 @@ public class EventListener implements GLEventListener{
 		
 		Camera.update();
 		gl.glTranslatef(-Camera.getPosition().getX(), -Camera.getPosition().getY(),0);
+		GameLoop.Renderstep.Fire();
 		World.render();
+		GameLoop.PostRenderstep.Fire();
 		gl.glTranslatef(Camera.getPosition().getX(), Camera.getPosition().getY(),0);
 	}
 
@@ -36,12 +38,14 @@ public class EventListener implements GLEventListener{
 		gl.glClearColor(0,0,0,1);
 		
 		gl.glEnable(GL2.GL_TEXTURE_2D);
+		gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+		gl.glEnable(GL2.GL_BLEND );
 	}
 
 	//called when you resize the window
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
 		GL2 gl = drawable.getGL().getGL2();
-		System.out.println(x+" / "+y+" / "+width+" / "+height);
+		System.out.println("CHANGED WINDOW PROPERTIES: "+x+" / "+y+" / "+width+" / "+height);
 		
 		gl.glMatrixMode(GL2.GL_PROJECTION);
 		gl.glLoadIdentity(); // sets everything to zero

@@ -3,6 +3,8 @@ package org.engine;
 import org.graphics.Renderer;
 import org.world.World;
 
+class Empty{};
+
 public class GameLoop {
 	
 	private static boolean running = false;
@@ -15,6 +17,11 @@ public class GameLoop {
 	
 	private static int targetFPS = 144;
 	private static int targetTime = 1000000000/targetFPS;
+
+	public static final Signal<Long> Heartbeat = new Signal<>();
+	public static final Signal<Empty> Renderstep = new Signal<>();
+	public static final Signal<Long> PostHeartbeat = new Signal<>();
+	public static final Signal<Empty> PostRenderstep = new Signal<>();
 	
 	
 	public static void start() {
@@ -32,10 +39,12 @@ public class GameLoop {
 					render = false;
 					
 					long currentTime = System.nanoTime();
-					
+					long timePassed = currentTime - lastUpdateTime;
 					// UPDATE INTERNALS
-					while(currentTime - lastUpdateTime > targetTime) {
-						World.update();
+					while(timePassed > targetTime) {
+						Heartbeat.Fire(lastUpdateTime);
+						World.update(lastUpdateTime);
+						PostHeartbeat.Fire(lastUpdateTime);
 						lastUpdateTime += targetTime;
 						updates++;
 						render = true;
@@ -45,7 +54,9 @@ public class GameLoop {
 					
 					// RENDER GAME
 					if (render) {
+						
 						Renderer.render();
+						//lastFPSCheck = System.nanoTime();
 						fps++;
 						/*
 						// FPS COUNTER

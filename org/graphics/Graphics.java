@@ -8,13 +8,19 @@ public class Graphics {
 	private static float blue = 1;
 	private static float green = 1;
 	private static float alpha = 1;
+
+	private static float borderRed = 1;
+	private static float borderGreen = 1;
+	private static float borderBlue = 1;
+	private static float borderAlpha = 1;
+
+	private static float pointSize = 1;
 	
-	private static float rotation = 45;
+	private static float rotation = 0;
 	
 	public static void fillRect(float x, float y, float width, float height) {
 		GL2 gl = EventListener.gl;
 		float w = width/2, h = height/2;
-		
 		gl.glTranslatef(x, y, 0); //set rotation data
 		gl.glRotatef(rotation, 0, 0, 1);
 		
@@ -28,6 +34,42 @@ public class Graphics {
 		
 		gl.glRotatef(-rotation, 0, 0, 1); //reset
 		gl.glTranslatef(-x, -y, 0);
+	}
+
+	public static void fillRectWithBorders(float x, float y, float width, float height) {
+		GL2 gl = EventListener.gl;
+		float w = width/2, h = height/2;
+		gl.glTranslatef(x, y, 0); //set rotation data
+		gl.glRotatef(rotation, 0, 0, 1);
+		
+		gl.glColor4f(red, green, blue, alpha); //drawRect
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2f(-w, -h);
+			gl.glVertex2f(w, -h);
+			gl.glVertex2f(w, h);
+			gl.glVertex2f(-w, h);
+		gl.glEnd();
+
+		gl.glColor4f(borderRed, borderGreen, borderBlue, borderAlpha); //drawRect
+		//Draw Border
+		gl.glBegin(GL2.GL_LINE_LOOP);
+			gl.glVertex2f(-w, -h);
+			gl.glVertex2f(-w, h);
+			gl.glVertex2f(w, h);
+			gl.glVertex2f(w, -h);
+		gl.glEnd();
+		
+		gl.glRotatef(-rotation, 0, 0, 1); //reset
+		gl.glTranslatef(-x, -y, 0);
+	}
+
+	public static void drawPoint(float x, float y){
+		GL2 gl = EventListener.gl;
+		gl.glColor4f(red, green, blue, alpha);
+		gl.glPointSize(pointSize);
+		gl.glBegin(GL2.GL_POINTS);
+			gl.glVertex2f(x, y);  
+		gl.glEnd();
 	}
 
 	public static void drawPolygon(Vector2 center, Vector2[] points){
@@ -71,9 +113,20 @@ public class Graphics {
 		blue = Math.max(0, Math.min(1, b));
 		alpha = Math.max(0, Math.min(1, a));
 	}
+
+	public static void setBorderColor(float r, float g, float b, float a) {
+		borderRed = Math.max(0, Math.min(1, r));
+		borderGreen = Math.max(0, Math.min(1, g));
+		borderBlue = Math.max(0, Math.min(1, b));
+		borderAlpha = Math.max(0, Math.min(1, a));
+	}
 	
 	public static void setRotation(float rot) {
 		rotation = rot;
+	}
+
+	public static void setPointSize(float s){
+		pointSize = s;
 	}
 
 }
