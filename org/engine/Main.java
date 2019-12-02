@@ -10,6 +10,16 @@ import org.util.*;
 
 public class Main {
 
+	public static long wait(float t){
+		long startTime = System.nanoTime();
+		try {
+			Thread.sleep((long) (t * 1000));
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return System.nanoTime() - startTime;
+	}
+
 	public static void main(String[] args) {
 		Renderer.init();
 		GameLoop.start();
@@ -18,7 +28,7 @@ public class Main {
 		float width = Renderer.unitsWide;
         float height = Renderer.unitsTall;
 
-        
+        /*
 		//QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
 		Rectangle boundary = new Rectangle(0,0, width/2,height/2);
 		QuadTree qt = new QuadTree(boundary, 16);
@@ -32,7 +42,6 @@ public class Main {
 			long st = System.nanoTime();
 			
 			//qt.render();
-			
 
 			Rectangle search = new Rectangle(Mouse.getWorldX(),-Mouse.getWorldY(), 12,6);
 			Graphics.setColor(0,0,0,0);
@@ -48,28 +57,27 @@ public class Main {
 				Graphics.drawPoint(p.getX(), p.getY());
 			}
 		});
-
+		*/
       
-		Frame obj = new Frame(new UDim2(0, 0, 0, 0), new UDim2(.5f, 1, .5f, 1));
-		World.addObject(obj);
+		Frame obj1 = new Frame(new UDim2(0.25f, 0, 0.5f, 0), new UDim2(0, 10, 0 , 10));
+		World.addObject(obj1);
+		wait(1f);
+		Frame obj2 = new Frame(new UDim2(0.75f, 0, 0.5f, 0), new UDim2(0, 10, 0, 10));
+		World.addObject(obj2);
+		/*wait(1f);
+		Frame obj3 = new Frame(new UDim2(1, 0, 1, 0), new UDim2(.5f, 20, .5f, 20));
+		World.addObject(obj3);
+		wait(1f);
+		Frame obj4 = new Frame(new UDim2(0, 0, 1, 0), new UDim2(0, 20, 0 , 20));
+		World.addObject(obj4);
+		wait(1f);*/
 
 		GameLoop.Heartbeat.Connect(timePassed -> {
-			obj.setPosition(UDim2.add(obj.getPosition(), new UDim2(.01f,0,0,0)));
+			obj1.setSize(obj1.getSize().add(new UDim2(0,1,0,1)));
+			obj2.setSize(obj2.getSize().add(new UDim2(.001f,0,0.001f,0)));
+			//obj.setPosition(UDim2.add(obj.getPosition(), new UDim2(.001f,0,0.001f,0)));
+			//System.out.println(obj.getPosition());
 		});
-
-        for (int i = 0; i < 300; i++){
-            //Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
-			//qt.insert(p);
-			try{
-				Thread.sleep(20);
-				//System.out.println("NEWPOINT");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-		}
-
-		
-		
 		
 		/*
 
@@ -81,12 +89,6 @@ public class Main {
 		Player p1 = new Player();
 		p1.setSize(new Vector2(3,2));
 		Camera.setFocus(p1);
-
-		// TEST UDIM2
-		UDim2 t1 = new UDim2(5.f, 1, 0.5f, 0);
-		UDim2 t2 = new UDim2(6.f, 0, 0.7F, 1);
-		UDim2 t3 = UDim2.add(t1, t2); 
-		System.out.println(t3);
 
 		World.addObject(p1);
 		*/

@@ -92,10 +92,14 @@ abstract class GuiObject extends GameObject{
     
     public void render(){
         Vector2 pixelPosition = convertUDim2(this.Position);
+        Vector2 pixelSize = convertUDim2(this.Size);
 
         float x = (Renderer.unitsWide / Renderer.getWindowWidth() * pixelPosition.getX() - Renderer.unitsWide / 2) + Camera.getPosition().getX();
-        float y = (Renderer.unitsWide / Renderer.getWindowHeight() * pixelPosition.getY() - Renderer.unitsWide / 2) + Camera.getPosition().getY();
-        Graphics.fillRect(x, y, 10, 10);
+        float y = (Renderer.unitsTall / Renderer.getWindowHeight() * -pixelPosition.getY() + Renderer.unitsTall / 2) + Camera.getPosition().getY();
+
+        float w = (Renderer.unitsWide / Renderer.getWindowWidth() * pixelSize.getX());
+        float h = (Renderer.unitsTall / Renderer.getWindowHeight() * pixelSize.getY());
+        Graphics.fillRect(x, y, w, h);
     }
   
 

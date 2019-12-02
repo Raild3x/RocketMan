@@ -27,9 +27,17 @@ public class UDim2 {
         return new UDim2(UDim.add(a.x, b.x), UDim.add(a.y, b.y)); 
     }
 
+    public UDim2 add(UDim2 b){
+        return new UDim2(UDim.add(this.x, b.x), UDim.add(this.y, b.y)); 
+    }
+
     // SUBTRACTION
     public static UDim2 sub(UDim2 a, UDim2 b){
         return new UDim2(UDim.sub(a.x, b.x), UDim.sub(a.y, b.y)); 
+    }
+
+    public UDim2 sub(UDim2 b){
+        return new UDim2(UDim.sub(this.x, b.x), UDim.sub(this.y, b.y)); 
     }
     
     // Linear interpolation of UDim2s

@@ -26,11 +26,11 @@ public class Mouse implements MouseListener{
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		System.out.println("Entered");
+		//System.out.println("Entered");
 	}
 
 	public void mouseExited(MouseEvent e) {
-		System.out.println("Exited");
+		//System.out.println("Exited");
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -41,15 +41,16 @@ public class Mouse implements MouseListener{
 	}
 
 	public void mousePressed(MouseEvent e) {
-		System.out.println("Pressed");
+		System.out.println("X: "+e.getX()+"\tY: "+e.getY());
+		//System.out.println("Pressed");
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		System.out.println("Released");
+		//System.out.println("Released");
 	}
 
 	public void mouseWheelMoved(MouseEvent e) {
-		System.out.println("Scrolled");
+		//System.out.println("Scrolled");
 	}
 
 

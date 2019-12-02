@@ -1,8 +1,7 @@
 package org.graphics;
 
 import com.jogamp.opengl.GL2;
-
-import  org.util.Vector2;
+import org.util.Vector2;
 
 public class Graphics {
 	

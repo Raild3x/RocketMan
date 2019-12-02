@@ -2,7 +2,7 @@ package org.util;
 
 import org.graphics.Graphics;
 import org.graphics.Renderer;
-import org.graphics.Vector2;
+import org.util.Vector2;
 
 import java.util.ArrayList;
 
