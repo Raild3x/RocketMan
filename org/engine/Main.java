@@ -23,8 +23,12 @@ public class Main {
 			//qt.render();
 		});
 
-		Frame obj = new Frame(new UDim2(0, 10, 0, 10), new UDim2(.5f, 1, .5f, 1));
+		Frame obj = new Frame(new UDim2(0, 0, 0, 0), new UDim2(.5f, 1, .5f, 1));
 		World.addObject(obj);
+
+		GameLoop.Heartbeat.Connect(timePassed -> {
+			obj.setPosition(UDim2.add(obj.getPosition(), new UDim2(.01f,0,0,0)));
+		});
 
         for (int i = 0; i < 300; i++){
             //Point p = qt.new Point((float) Math.random()*width-width/2, (float) Math.random()*height-height/2);
