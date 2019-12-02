@@ -66,6 +66,11 @@ abstract class GuiObject {
     public void TweenSizeAndPosition( UDim2 endSize , UDim2 endPosition , int easingDirection , int easingStyle , float time , boolean override){
 
     }
+
+    public GuiObject(){
+        this.Position = new UDim2();
+        //etc...
+    }
     
   
 

@@ -17,6 +17,11 @@ public class UDim2 {
         this.y = y; 
     }
 
+    public UDim2(){
+        this.x = new UDim();
+        this.y = new UDim();
+    }
+
     // ADDITION
     public static UDim2 add(UDim2 a, UDim2 b){
         return new UDim2(UDim.add(a.x, b.x), UDim.add(a.y, b.y)); 
