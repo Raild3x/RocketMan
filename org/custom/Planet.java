@@ -1,7 +1,8 @@
-package org.world;
+package org.custom;
 
 import org.graphics.Graphics;
 import org.util.Vector2;
+import org.world.PhysicsObject;
 
 public class Planet extends PhysicsObject {
 

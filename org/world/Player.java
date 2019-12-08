@@ -2,6 +2,7 @@ package org.world;
 
 import com.jogamp.newt.event.KeyEvent;
 
+import org.custom.Planet;
 import org.engine.GameLoop;
 import org.util.Vector2;
 import org.input.Keyboard;
@@ -45,7 +46,7 @@ public class Player extends PhysicsObject{
 		//vel += Thrust == 0 ? (vel != 0 ? (vel > 0 ? -0.2f : 0.2f) : 0) : Thrust/4; // calculate decrease in velocity if not moving
 		//vel += Thrust/4;
 		//vel = Math.max(-maxVel, Math.min(maxVel, vel)); // clamp velocity
-		this.setRotation(this.getRotation() + Rot);
+		this.setRotation(this.getRotation() + Rot * GameLoop.updateDelta()*90);
 		this.setVelocity(this.getVelocity().add(this.getLookVector().mult(Thrust))); //Add thrust movement
 		for (Planet obj: World.celestialBodies){
 			this.setVelocity(this.getVelocity().add(obj.getGravity(this)));

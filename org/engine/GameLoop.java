@@ -97,6 +97,6 @@ public class GameLoop {
 
 	public static float updateDelta(){
 		//System.out.println(1.0f / 1000000000 * targetTime);
-		return 1.0f / 1000000000 * targetTime;
+		return 1.0f / targetFPS;
 	}
 }

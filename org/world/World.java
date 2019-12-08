@@ -2,6 +2,7 @@ package org.world;
 
 import java.util.ArrayList;
 
+import org.custom.Planet;
 import org.engine.Signal;
 
 public class World {

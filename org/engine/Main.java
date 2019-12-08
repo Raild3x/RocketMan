@@ -6,7 +6,8 @@ import org.graphics.*;
 import org.input.*;
 import org.util.*;
 import org.world.*;
-import org.util.*; 
+import org.util.*;
+import org.custom.*; 
 
 public class Main {
 
@@ -26,7 +27,8 @@ public class Main {
 
 		//QUAD TREE TEST
 		float width = Renderer.unitsWide;
-        float height = Renderer.unitsTall;
+		float height = Renderer.unitsTall;
+		 
 
         /*
 		//QuadTree qt = new QuadTree(0,0,width/2,height/2 , 4);
@@ -59,28 +61,19 @@ public class Main {
 		});
 		*/
       
-		Frame obj1 = new Frame(new UDim2(0.25f, 0, 0.5f, 0), new UDim2(0, 10, 0 , 10));
+		/*Frame obj1 = new Frame(new UDim2(0.25f, 0, 0.5f, 0), new UDim2(0, 10, 0 , 10));
 		World.addObject(obj1);
 		wait(1f);
 		Frame obj2 = new Frame(new UDim2(0.75f, 0, 0.5f, 0), new UDim2(0, 10, 0, 10));
 		World.addObject(obj2);
-		/*wait(1f);
-		Frame obj3 = new Frame(new UDim2(1, 0, 1, 0), new UDim2(.5f, 20, .5f, 20));
-		World.addObject(obj3);
-		wait(1f);
-		Frame obj4 = new Frame(new UDim2(0, 0, 1, 0), new UDim2(0, 20, 0 , 20));
-		World.addObject(obj4);
-		wait(1f);*/
-
 		GameLoop.Heartbeat.Connect(timePassed -> {
 			obj1.setSize(obj1.getSize().add(new UDim2(0,1,0,1)));
 			obj2.setSize(obj2.getSize().add(new UDim2(.001f,0,0.001f,0)));
 			//obj.setPosition(UDim2.add(obj.getPosition(), new UDim2(.001f,0,0.001f,0)));
 			//System.out.println(obj.getPosition());
 		});
+		*/
 		
-		/*
-
 		//World.addObject(new Planet(new Vector2(10,8), 5.5f, 1, 0));
 		World.addCelestialBody(new Planet(new Vector2(-25,24), 12, 2.5f, 0));
 		World.addCelestialBody(new Planet(new Vector2(15,-45), 25, 2, 0));
@@ -91,7 +84,7 @@ public class Main {
 		Camera.setFocus(p1);
 
 		World.addObject(p1);
-		*/
+		
 	}
 
 }
